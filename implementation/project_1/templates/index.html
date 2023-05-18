@@ -1,0 +1,109 @@
+<html>
+    
+<head>
+    <meta charset="utf-8">
+	<title> Welcome Page </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+        <a class="navbar-brand" href="/main.html">
+<img src="../static/logo.png" width="50" height="50" alt="Prashanth" loading="lazy" class="d-inline-block align-top">                           Team SPS </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar" aria-controls="mynavbar" aria-expanded="false" aria-label="Toggle navigation">
+      					<span class="navbar-toggler-icon"></span>
+    		</button>
+
+            <div class="justify-content-end collapse navbar-collapse " id="navbarTogglerDemo01">
+                <a href="https://www.facebook.com/" target="_blank" class="navbar-brand">Facebook</a>
+
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+                    <li class="nav-item active "> <a class="nav-link" target="_blank" href="https://www.instagram.com/">Instagram</a></li>
+                    <li class="nav-item "> <a class="nav-link" target="_blank" href="https://www.youtube.com/">Youtube</a> </li>
+                    <li class="nav-item "> <a class="nav-link" target="_blank" href="https://twitter.com/">Twitter</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </nav>
+    
+</head>
+
+<body>
+    {% block content %}
+
+    <div>
+        <p> <h1 align='center'>News Article Analysis</h1> </p>
+    
+        <!-- 
+         <div class="container">
+            <div class="row">
+                <h2>Select a file to upload</h2>
+            <p>
+                {% with messages = get_flashed_messages() %} {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} {% endwith %}
+            </p>
+        </div>
+        </div>
+                
+        <form method="post" action="/" enctype="multipart/form-data"><dl>
+        <p><input type="file" name="file" class="form-control" autocomplete="off" required></p></dl>
+   
+        <button type="submit" name="image_button" value="image_button" class="btn btn-info">Image Submit </button>
+        <button type="submit" name="image_text_button" value="image_text_button" class="btn btn-info">Text to Image </button>
+        </form> -->
+
+    
+        <div class="container">
+            <div class="row">
+
+<form action="/news_article_link" method="post">
+    <!-- input-1 -->
+    <h2>Paste the news article link</h2>  
+        <p><input type="text" name="article_id" size="50"></p>
+
+        <select id="news_articles" name="news_company">
+            <option value="India_Today">India Today</option>                <option value="The_Hindu">The Hindu</option>
+            <option value="The_Indian_Express">The Indian Express</option>  <option value="Times_of_India">Times of India</option>
+            <option value="NDTV">NDTV</option>
+        </select>
+        
+        <button type="submit" name="get_news_button" value="" class="btn btn-info">Get News Content</button>
+</form>
+
+<form action="/plain_news" method="post">
+    <br><br>
+    <!-- input-2 -->    
+    <h2>Paste the news</h2>  
+        <p><textarea name="text_id" cols="60" rows="10"></textarea></p>
+        <button type="submit" name="your_news_button" value="" class="btn btn-info">Your News Content</button>
+</form>
+
+<form action="/translate_news" method="post">
+    <br><br>
+    <!-- input-3 -->
+    <h2>Translate the news</h2> 
+    <p><textarea name="translate_text_id" cols="60" rows="10"></textarea></p>
+    <label for="languages">Choose the language:</label>
+
+    <select id="languages" name="destination_language_id">
+        <option value="tamil">தமிழ்</option>       <option value="en">English</option>
+        <option value="french">French</option>    <option value="hindi">Hindi</option>
+    </select>
+
+    <button type="submit" name="translate_button" value="" class="btn btn-info"> Translate Button </button>    
+</form>
+
+</div>
+</div>
+</div>
+
+    {% endblock %}
+</body>
+
+</html>

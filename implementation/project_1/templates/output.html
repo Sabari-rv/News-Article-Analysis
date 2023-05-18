@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    {% if news_content %}
+        <center><h1> Your Pasted News Content is below </h1></center>
+        <h2>{{news_content}}</h2>
+        {% set final_text = news_content %}
+    {% endif %}
+
+    {% if plain_news %}
+        <center><h1> Your News Content from article is below </h1></center>
+        <h2>{{plain_news}}</h2>
+        {% set final_text = plain_news %}
+    {% endif %}
+
+    {% if translated_news %}
+        <center><h1> Your Translated News Content is below </h1></center>
+        <h2>{{translated_news}}</h2>
+        {% set final_text = translated_news %}
+    {% endif %}
+    
+    <center>
+        <br><br> 
+        <form action="/summarize_news" method="post">
+            <button type="submit" name="summarize_button" value={{ final_text }} class="btn btn-info">Summarize News</button>
+        </form>
+
+        <form action="/categorize_news" method="post">
+            <input type="hidden"  name="categorize_id" value={{ final_text }}>
+            <button type="submit" name="categorize_button" value="" class="btn btn-info">Categorize News</button>
+        </form>
+    </center>
+
+{% endblock %}
+
